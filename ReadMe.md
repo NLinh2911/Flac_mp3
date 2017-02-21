@@ -22,3 +22,5 @@ Demo kỹ thuật child-process, BlueBird promise
 ```
 
 ##
+
+## Ứng dụng sử dụng converter.js, scanfile.js and convert_runner.js
