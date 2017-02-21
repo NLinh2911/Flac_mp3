@@ -2,7 +2,7 @@
 
 Demo kỹ thuật child-process, BlueBird promise
 
-# Ứng dụng nhận input là đường dẫn của folder gồm nhiều files flac. Output là 1 folder có cấu trúc tương tự gồm các files nhạc được chuyển sang định dạng mp3
+## Ứng dụng nhận input là đường dẫn của folder gồm nhiều files flac. Output là 1 folder có cấu trúc tương tự gồm các files nhạc được chuyển sang định dạng mp3
 
 ## Yêu cầu:
 1. Nhận đường dẫn của source folder chứa file flac
