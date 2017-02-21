@@ -32,14 +32,17 @@ Demo kỹ thuật child-process, BlueBird promise
 4. Ra 1 array của path file của tất cả file flac 
 5. Kiểm tra xem file đã được convert trước đây không bằng cách đối chiếu với danh sách flac đã converted được lưu trong doneFiles.json 
 6. Cuối cùng có 1 array gồm path file chưa convert 
+
 ### Tạo destination folder:
 1. Hàm mp3Path nhận array chứa path file của flac và 1 instance của class Converter trong converter.js
 2. Instance chứa thông tin source folder và destination folder (constructor của class Converter)
 3. Hàm mp3Path chạy qua array chứa path file của flac, với mỗi đường dẫn, thay source folder với destination folder và '.flac' với '.mp3
 4. Cuối cùng trả lại 1 array mới chứa path file của mp3 (cấu trúc y hệt của source folder)
+
 ### Convert files bằng hàm renderFile:
 1. Nhận array chứa path file của flac, array của mp3, hàm converter 
 2. Giới hạn xử lý 2 files 1 lúc
 3. Nếu file convert xong,đổi status sang done và cập nhật json file
 4. Nếu bắt lỗi, log tên file lỗi sang log.txt (những file có đuôi .flac nhưng không phải là file flac) 
+
 ### Hàm tổng hợp chạy các bước là runner    
