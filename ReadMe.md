@@ -15,7 +15,7 @@ Demo kỹ thuật child-process, BlueBird promise
 ## Chạy thử ứng dụng
 
 ```
-    git clone
+    git clone https://github.com/NLinh2911/Flac_mp3
     cd Flac_mp3
     // Nhập đường dẫn đầy đủ của source folder chứa files flac cần convert và destination folder muốn chứa mp3
     node --harmony-async-await convert_runner.js
