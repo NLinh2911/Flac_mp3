@@ -29,9 +29,9 @@ exports.Converter = class {
       shell.mkdir('-p',tempdir);
       const converter = spawn('ffmpeg', ['-y', '-i', inputFile, '-ab', '320k', '-map_metadata', '0', '-id3v2_version', '3', outputFile]);
 
-      converter.stderr.on('data', (data) => {
-        console.log(`${data}`);
-      });
+      // converter.stderr.on('data', (data) => {
+      //   //console.log(`${data}`);
+      // });
 
       converter.on('close', (code) => {
         if (code === 0) {

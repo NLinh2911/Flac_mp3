@@ -91,8 +91,6 @@ exports.ScanFile = class {
      * @param dir
      * @returns {Promise.<Array>}
      */
-
-
     async listAllFlac(dir) {
         let arrFlac = await this.addFlac(dir,this.checkFlac);
         //compare it to arrFlac -> remove duplicates
