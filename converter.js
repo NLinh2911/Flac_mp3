@@ -15,17 +15,6 @@ exports.Converter = class {
     this.destFolder = destFolder;
   }
 
-  /**
-   *
-   * @param inputFile
-   */
-  //TODO: hãy viết hàm để tìm ra outputFile phù hợp dựa vào sourceFolder, destFolder và inputFile
-  // getOutputFile(inputFile){
-  //   let temp = inputFile.replace(this.sourceFolder,this.destFolder);
-  //   let temp1 = temp.replace('.flac','.mp3');
-  //   return temp1;
-  // }
-
   /***
    *
    * @param inputFile input file định dạng flac, output file có tên giống với input file extenstion là mp3

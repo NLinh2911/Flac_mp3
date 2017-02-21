@@ -15,7 +15,7 @@ const writer = fs.createWriteStream(__dirname + '/log.txt',{'flags': 'a'});
 //Nguyen code
 let count = 0;
 let done = 0;
-const jsonArray = scanFile.jsonArray;
+const jsonArray = scanFile.jsonArray; // import jsonArray đã đc parsed từ scanfile.js
   renderFile = (arrFlac,arrMp3,convert)=>{
     arrFlac.forEach((file,index)=>{
         if(count < 2 && file.status === 'not convert'){
@@ -24,10 +24,9 @@ const jsonArray = scanFile.jsonArray;
             convert.flacToMp3(file.name,arrMp3[index]).then(()=>{
                 count--;
                 done++;
-                jsonArray.push(file.name);
+                jsonArray.push(file.name); // cập nhật converted files vào json
                 fs.writeFileSync('doneFiles.json',JSON.stringify(jsonArray, null, 2), 'utf-8');
                 renderFile(arrFlac,arrMp3,convert);
-
                 if(done == arrFlac.length){
                     console.timeEnd("convert");
                 }
@@ -41,26 +40,16 @@ const jsonArray = scanFile.jsonArray;
  };
 
 // Module make by Nam
- let mp3Path = (pathFlac,convert) => {
+ const mp3Path = (pathFlac,convert) => {
     let arrMp3 = [];
     pathFlac.forEach(file => {
         let filename = file.name;
         let desname = filename.replace(convert.sourceFolder,convert.destFolder);
-            let temp = desname.replace('.flac', '.mp3');
-            arrMp3.push(temp);
+        let temp = desname.replace('.flac', '.mp3');
+        arrMp3.push(temp);
     });
     return arrMp3;
 };
-
-//cach 1
-//  async function runner(srcFolder,desFolder){
-//     var myConvert = new Converter(srcFolder,desFolder);
-//     var myScanner = new ScanFile(srcFolder);
-//     //Get array .flac files
-//     var fileArr = await myScanner.listAllFlac(myScanner.srcFolder);
-//     // Convert .flac to .mp3
-//     renderFile(fileArr,myConvert);
-//  }
 
 // Sau khi Merge
 async function runner(srcFolder,desFolder){
@@ -76,7 +65,8 @@ async function runner(srcFolder,desFolder){
  }
 
 console.time("convert");
-runner('/home/linh/Desktop/convert', '/home/linh/Desktop/convert_2');
+// Run the app
+//runner('/home/linh/Desktop/convert', '/home/linh/Desktop/convert_2');
 
 
 

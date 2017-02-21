@@ -5,7 +5,8 @@ const fs = require('fs');
 const path = require('path');
 const Promise = require('bluebird');
 
-//read and call the json file
+//read and call the json file of converted flac files
+// Export the json file
 const readDoneFiles = fs.readFileSync("doneFiles.json");
 exports.readDoneFiles = readDoneFiles;
 const jsonArray = JSON.parse(readDoneFiles);
@@ -16,11 +17,9 @@ exports.ScanFile = class {
 
     /*** Constructor
      * @param sourceFolder đường dẫn tới thư mục file flac
-     * 
      */ 
     constructor(sourceFolder){
         this.srcFolder = sourceFolder;
-
     }
 
     /***
