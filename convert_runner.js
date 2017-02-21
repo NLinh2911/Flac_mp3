@@ -66,7 +66,7 @@ async function runner(srcFolder,desFolder){
 
 console.time("convert");
 // Run the app
-runner('/home/linh/Desktop/flac', '/home/linh/Desktop/new_2');
+runner('/home/linh/Desktop/Adele', '/home/linh/Desktop/new_2');
 
 
 

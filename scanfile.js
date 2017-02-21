@@ -3,7 +3,7 @@
 //
 const fs = require('fs');
 const path = require('path');
-const Promise = require('bluebird');
+// const Promise = require('bluebird');
 
 //read and call the json file of converted flac files
 // Export the json file
@@ -57,7 +57,6 @@ exports.ScanFile = class {
      * @returns {Array}
      */
     addFlac(dir,check) {
-        return new Promise((resolve, reject) => {
             let allFiles = this.getFiles(dir);
             let flacFiles = [];
             allFiles.forEach(file => {
@@ -65,9 +64,9 @@ exports.ScanFile = class {
                     flacFiles.push({name: file, status: 'not convert'});
                 }
             });
-            resolve(flacFiles);
-        });
-    }
+            return flacFiles;
+    };
+
     //TODO: Hàm kiểm tra array của tất cả flac với json file đã converted
      /***
       * Hàm kiểm tra array của tất cả flac với json file đã converted
@@ -91,18 +90,25 @@ exports.ScanFile = class {
      * @param dir
      * @returns {Promise.<Array>}
      */
-    async listAllFlac(dir) {
-        let arrFlac = await this.addFlac(dir,this.checkFlac);
-        //compare it to arrFlac -> remove duplicates
-        const newArrFlac = this.checkJson(jsonArray, arrFlac);
-        //console.timeEnd("scanSync");
+    // async listAllFlac(dir) {
+    //     let arrFlac = await this.addFlac(dir,this.checkFlac);
+    //     //compare it to arrFlac -> remove duplicates
+    //     const newArrFlac = this.checkJson(jsonArray, arrFlac);
+    //     // console.timeEnd("scanSync");
+    //     return newArrFlac;
+    // }
+
+    listAllFlac (dir) {
+        let arrFlac = this.addFlac(dir,this.checkFlac);
+        let newArrFlac = this.checkJson(jsonArray, arrFlac);
         return newArrFlac;
     }
 };
 
 //
 // console.time("scanSync");
-//const scanner = new ScanFile('/home/linh/Desktop/Adele');
+// const scanner = new ScanFile('/home/linh/Desktop/Adele');
+// console.log(scanner.listAllFlac(scanner.srcFolder));
 
 
 
