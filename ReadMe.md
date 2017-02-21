@@ -11,6 +11,7 @@ Demo kỹ thuật child-process, BlueBird promise
 4. Converter sử dụng ffmpeg để convert flac sang mp3. Trong quá trình chạy nếu gặp file flac giả, sẽ báo lỗi, và log thông tin file flac giả vào log.txt
 5. Trong quá trình chạy, ứng dụng lưu những file đã convert vào 1 file json để lần sau cập nhật file flac mới, ứng dụng convert thẳng file mới mà không convert lại file cũ
 
+#### Note: thay vì sử dụng JSON, có thể
 
 ## Chạy thử ứng dụng
 

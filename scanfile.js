@@ -90,6 +90,7 @@ exports.ScanFile = class {
      * @param dir
      * @returns {Promise.<Array>}
      */
+    // Cách viết async await của Nguyên
     // async listAllFlac(dir) {
     //     let arrFlac = await this.addFlac(dir,this.checkFlac);
     //     //compare it to arrFlac -> remove duplicates
@@ -98,6 +99,7 @@ exports.ScanFile = class {
     //     return newArrFlac;
     // }
 
+    // Dùng hàm bt
     listAllFlac (dir) {
         let arrFlac = this.addFlac(dir,this.checkFlac);
         let newArrFlac = this.checkJson(jsonArray, arrFlac);
