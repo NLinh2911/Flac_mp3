@@ -18,7 +18,7 @@ let done = 0;
 const jsonArray = scanFile.jsonArray; // import jsonArray đã đc parsed từ scanfile.js
   renderFile = (arrFlac,arrMp3,convert)=>{
     arrFlac.forEach((file,index)=>{
-        if(count < 2 && file.status === 'not convert'){
+        if(count < 4 && file.status === 'not convert'){
             count++;
             file.status ='done';
             convert.flacToMp3(file.name,arrMp3[index]).then(()=>{
@@ -55,9 +55,9 @@ const jsonArray = scanFile.jsonArray; // import jsonArray đã đc parsed từ s
 async function runner(srcFolder,desFolder){
     const myConvert = new Converter(srcFolder,desFolder);
     const myScanner = new scanFile.ScanFile(srcFolder);
-    //Get array .flac files make By Tung
+    //Get array .flac files make by Tung
     const fileArrFlac = await myScanner.listAllFlac(myScanner.srcFolder);
-    // Nam
+    // Tạo array mp3 by Nam
     const fileArrMp3 = mp3Path(fileArrFlac,myConvert);
 
     // Convert .flac to .mp3
@@ -66,7 +66,7 @@ async function runner(srcFolder,desFolder){
 
 console.time("convert");
 // Run the app
-//runner('/home/linh/Desktop/convert', '/home/linh/Desktop/convert_2');
+runner('/home/linh/Desktop/flac', '/home/linh/Desktop/new_2');
 
 
 
