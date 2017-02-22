@@ -102,8 +102,8 @@ exports.ScanFile = class {
     // Dùng hàm bt
     listAllFlac (dir) {
         let arrFlac = this.addFlac(dir,this.checkFlac);
-        let newArrFlac = this.checkJson(jsonArray, arrFlac);
-        return newArrFlac;
+        // let newArrFlac = this.checkJson(jsonArray, arrFlac); // return newArrFlac if checking with JSON
+        return arrFlac;
     }
 };
 

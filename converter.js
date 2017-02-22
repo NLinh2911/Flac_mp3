@@ -27,7 +27,7 @@ exports.Converter = class {
       let tempdir = outputFile.replace("/" + path.basename(outputFile),'');
       // shell module sử dụng để tạo full path
       shell.mkdir('-p',tempdir);
-      const converter = spawn('ffmpeg', ['-y', '-i', inputFile, '-ab', '320k', '-map_metadata', '0', '-id3v2_version', '3', outputFile]);
+      const converter = spawn('ffmpeg', ['-n', '-i', inputFile, '-ab', '320k', '-map_metadata', '0', '-id3v2_version', '3', outputFile]);
 
       // converter.stderr.on('data', (data) => {
       //   //console.log(`${data}`);

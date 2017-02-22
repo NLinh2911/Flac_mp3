@@ -5,6 +5,7 @@ const Promise = require('bluebird');
 const path = require('path');
 const fs = require('fs');
 const writer = fs.createWriteStream(__dirname + '/log.txt',{'flags': 'a'});
+//const jsonArray = scanFile.jsonArray; // import jsonArray đã đc parsed từ scanfile.js
 
 /*** 
     Func chuyển .flac files thành .mp3 files
@@ -15,7 +16,7 @@ const writer = fs.createWriteStream(__dirname + '/log.txt',{'flags': 'a'});
 //Nguyen code
 let count = 0;
 let done = 0;
-const jsonArray = scanFile.jsonArray; // import jsonArray đã đc parsed từ scanfile.js
+
   renderFile = (arrFlac,arrMp3,convert)=>{
     arrFlac.forEach((file,index)=>{
         if(count < 4 && file.status === 'not convert'){
@@ -24,8 +25,8 @@ const jsonArray = scanFile.jsonArray; // import jsonArray đã đc parsed từ s
             convert.flacToMp3(file.name,arrMp3[index]).then(()=>{
                 count--;
                 done++;
-                jsonArray.push(file.name); // cập nhật converted files vào json
-                fs.writeFileSync('doneFiles.json',JSON.stringify(jsonArray, null, 2), 'utf-8');
+                //jsonArray.push(file.name); // cập nhật converted files vào json
+                //fs.writeFileSync('doneFiles.json',JSON.stringify(jsonArray, null, 2), 'utf-8');
                 renderFile(arrFlac,arrMp3,convert);
                 if(done == arrFlac.length){
                     console.timeEnd("convert");

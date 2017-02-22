@@ -12,12 +12,14 @@ Demo kỹ thuật child-process, BlueBird promise
 5. Trong quá trình chạy, ứng dụng lưu những file đã convert vào 1 file json để lần sau cập nhật file flac mới, ứng dụng convert thẳng file mới mà không convert lại file cũ
 
 #### Note: thay vì sử dụng JSON, có thể dùng fs.existsSync để check file mp3, scan files flac như cũ (không lọc file đã convert) -> tạo mảng mp3 như cũ sau đó chạy qua mảng này xem đường dẫn nào tồn tại rồi thì loại bỏ. 
+#### Thay vì JSON hay fs.existsSync, tận dụng ffmpeg, thay tham sô '-y' (overwrite) thành '-n' sẽ tự bỏ qua những file đã tồn tại
+
 ## Chạy thử ứng dụng
 
 ```
     git clone https://github.com/NLinh2911/Flac_mp3
     cd Flac_mp3
-    // Nhập đường dẫn đầy đủ của source folder chứa files flac cần convert và destination folder muốn chứa mp3
+    // Nhập đường dẫn đầy đủ của source folder chứa files flac cần convert và destination folder muốn chứa mp3 vào hàm runner cuối cùng
     // node --harmony-async-await convert_runner.js (nếu sử dụng async await cho hàm runner cuối cùng)
     node convert_runner.js  // Viết hàm callback cho runner2
 ```
