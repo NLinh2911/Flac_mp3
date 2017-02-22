@@ -52,21 +52,44 @@ const jsonArray = scanFile.jsonArray; // import jsonArray đã đc parsed từ s
 };
 
 // Sau khi Merge
-async function runner(srcFolder,desFolder){
-    const myConvert = new Converter(srcFolder,desFolder);
-    const myScanner = new scanFile.ScanFile(srcFolder);
-    //Get array .flac files make by Tung
-    const fileArrFlac = await myScanner.listAllFlac(myScanner.srcFolder);
-    // Tạo array mp3 by Nam
-    const fileArrMp3 = mp3Path(fileArrFlac,myConvert);
+// async function runner(srcFolder,desFolder){
+//     const myConvert = new Converter(srcFolder,desFolder);
+//     const myScanner = new scanFile.ScanFile(srcFolder);
+//     //Get array .flac files make by Tung
+//     const fileArrFlac = await myScanner.listAllFlac(myScanner.srcFolder);
+//     // Tạo array mp3 by Nam
+//     const fileArrMp3 = mp3Path(fileArrFlac,myConvert);
+//
+//     // Convert .flac to .mp3
+//     renderFile(fileArrFlac,fileArrMp3,myConvert);
+//  }
 
-    // Convert .flac to .mp3
+// Dùng hàm callback
+/**
+ * @param srcFolder
+ * @returns {array} trả lại mảng chứa tất cả file flac
+ */
+const getArrFlac = (srcFolder) => {
+    const myScanner = new scanFile.ScanFile(srcFolder);
+    return myScanner.listAllFlac(myScanner.srcFolder);
+
+};
+/**
+ * Hàm runner2 là hàm cuối cùng tổng hợp các bước
+ * @param srcFolder
+ * @param desFolder
+ * @param getArrFlac
+ */
+const runner2 = (srcFolder, desFolder, getArrFlac) =>{
+    const myConvert = new Converter(srcFolder,desFolder);
+    fileArrFlac= getArrFlac(srcFolder);
+    const fileArrMp3 = mp3Path(fileArrFlac,myConvert);
     renderFile(fileArrFlac,fileArrMp3,myConvert);
- }
+};
 
 console.time("convert");
 // Run the app
-runner('/home/linh/Desktop/Adele', '/home/linh/Desktop/new_2');
+runner2('/home/linh/Desktop/Adele', '/home/linh/Desktop/new_2', getArrFlac);
 
 
 

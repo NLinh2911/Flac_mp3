@@ -18,7 +18,8 @@ Demo kỹ thuật child-process, BlueBird promise
     git clone https://github.com/NLinh2911/Flac_mp3
     cd Flac_mp3
     // Nhập đường dẫn đầy đủ của source folder chứa files flac cần convert và destination folder muốn chứa mp3
-    node --harmony-async-await convert_runner.js
+    // node --harmony-async-await convert_runner.js (nếu sử dụng async await cho hàm runner cuối cùng)
+    node convert_runner.js  // Viết hàm callback cho runner2
 ```
 
 
@@ -54,12 +55,14 @@ Demo kỹ thuật child-process, BlueBird promise
 3. Nếu file convert xong,đổi status sang done và cập nhật json file
 4. Nếu bắt lỗi, log tên file lỗi sang log.txt (những file có đuôi .flac nhưng không phải là file flac)
 
-### Hàm tổng hợp chạy các bước là runner   
+### Hàm tổng hợp chạy các bước là runner hoặc runner2   
 
 1. Nhận array chứa path file của flac, array của mp3, hàm converter 
 2. Giới hạn xử lý 2 files 1 lúc
 3. Nếu file convert xong,đổi status sang done và cập nhật json file
 4. Nếu bắt lỗi, log tên file lỗi sang log.txt (những file có đuôi .flac nhưng không phải là file flac) 
 
-### Hàm tổng hợp chạy các bước là runner    
+### Hàm runner2 sử dụng callback, hàm runner sử dụng async await.
+1. Hàm runner2 nhận source folder, destination folder và hàm callback getArrFlac (hàm cb này trả về mảng chứa flac) 
+2. Với async await, getArrFlac được tổng hợp trong runner.
 
